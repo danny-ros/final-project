@@ -1,5 +1,4 @@
 import pytest
-from termcolor import colored
 
 STATES_CAPITALS = {
     'Alabama': 'Montgomery',
@@ -56,7 +55,7 @@ STATES_CAPITALS = {
 
 
 def capital_of_state(state):
-    print('Capital of ' + colored(state, 'red') + ' is ' + colored((STATES_CAPITALS[state]), 'green'))
+    print('Capital of ' + state + ' is ' + (STATES_CAPITALS[state]) + "\n")
 
 
 def get_state(capital):
@@ -66,60 +65,27 @@ def get_state(capital):
 
 
 def state_of_capital(capital):
-    print('State of ' + colored(capital, 'red') + ' is ' + colored(get_state(capital), 'green'))
+    print('State of ' + capital + ' is ' + get_state(capital) + "\n")
 
 
 def all_states():
-    print('All States:')
+    print('\nAll States:')
     for key in STATES_CAPITALS.keys():
         print(key)
 
 
 def all_capitals():
-    print('All Capitals:')
+    print('\nAll Capitals:')
     for value in STATES_CAPITALS.values():
         print(value)
 
 
 def states_capitals_string():
-    print('States and Capitals in a string:')
+    print('\nStates and Capitals in a string:')
     string = ''
     for key, value in STATES_CAPITALS.items():
         string += (key + ' -> ' + value + ' , ')
     print(string[:len(string)])
-
-
-user_input = str("")
-
-while user_input != "9":
-    user_input = input("""Select option:
-        1. What's the name of the capital of states in US?
-        2. What's the name of the states in US when the capital is?
-        3. Print all states.
-        4. Print all capitals.
-        5. Create a single string 'Alabama -> Montgomery, Alaska -> Juneau, ...'
-        9. Exit\n """)
-
-    if user_input == "1":  # capital of states
-        state = input("Enter the state to find the capitol: ")
-        capital_of_state(state)
-        wait = input("Press Enter to continue.")
-
-    if user_input == "2":  # state of capital
-        capital = input("Enter the capital to find the state: ")
-        state_of_capital(capital)
-        wait = input("Press Enter to continue.")
-
-    if user_input == "3":  # all states
-        all_states()
-
-    if user_input == "4":  # all capitals
-        all_capitals()
-
-    if user_input == "5":  # string of states and capitols
-        states_capitals_string()
-
-print('The state of Madison Capital city = ' + get_state('Madison'))
 
 
 def test_state_to_capital():
@@ -138,3 +104,11 @@ def test_capital_to_state():
 def test_capital_to_state_unknown():
     with pytest.raises(KeyError):
         raise KeyError
+
+capital_of_state('Wyoming')
+state_of_capital('Cheyenne')
+all_states()
+all_capitals()
+states_capitals_string()
+test_state_to_capital()
+test_capital_to_state()
