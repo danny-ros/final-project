@@ -55,7 +55,7 @@ STATES_CAPITALS = {
 
 
 def capital_of_state(state):
-    print('Capital of ' + state + ' is ' + (STATES_CAPITALS[state]) + "\n")
+    print('\nCapital of ' + state + ' is ' + (STATES_CAPITALS[state]) + "\n")
 
 
 def get_state(capital):
@@ -65,7 +65,7 @@ def get_state(capital):
 
 
 def state_of_capital(capital):
-    print('State of ' + capital + ' is ' + get_state(capital) + "\n")
+    print('\nState of ' + capital + ' is ' + get_state(capital) + "\n")
 
 
 def all_states():
@@ -105,10 +105,11 @@ def test_capital_to_state_unknown():
     with pytest.raises(KeyError):
         raise KeyError
 
-capital_of_state('Wyoming')
-state_of_capital('Cheyenne')
+
+capital_of_state('Idaho')
 all_states()
 all_capitals()
 states_capitals_string()
+state_of_capital('Boise')
 test_state_to_capital()
 test_capital_to_state()
